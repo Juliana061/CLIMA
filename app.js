@@ -9,14 +9,15 @@ async function fetchJSON(url) {
 
 /* === Mapas de códigos de clima (Open-Meteo) === */
 function weatherIcon(code){
-  if ([0].includes(code)) return "☀";                  // Despejado
+  // Referencia compacta
+  if ([0].includes(code)) return "☀️";                  // Despejado
   if ([1,2,3].includes(code)) return "⛅";              // Parcial nublado
-  if ([45,48].includes(code)) return "🌫";             // Niebla
-  if ([51,53,55,56,57].includes(code)) return "🌦";    // Llovizna
-  if ([61,63,65,80,81,82].includes(code)) return "🌧"; // Lluvia
-  if ([66,67].includes(code)) return "🌧❄";           // Lluvia helada
-  if ([71,73,75,85,86].includes(code)) return "🌨";    // Nieve
-  if ([95,96,99].includes(code)) return "⛈";           // Tormenta
+  if ([45,48].includes(code)) return "🌫️";             // Niebla
+  if ([51,53,55,56,57].includes(code)) return "🌦️";    // Llovizna
+  if ([61,63,65,80,81,82].includes(code)) return "🌧️"; // Lluvia
+  if ([66,67].includes(code)) return "🌧️❄️";           // Lluvia helada
+  if ([71,73,75,85,86].includes(code)) return "🌨️";    // Nieve
+  if ([95,96,99].includes(code)) return "⛈️";           // Tormenta
   return "❓";
 }
 function weatherText(code){
@@ -40,7 +41,8 @@ function weatherText(code){
 async function loadWeather(lat, lon, cityName) {
   try {
     const url =
-      `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+      `https://api.open-meteo.com/v1/forecast` +
+      `?latitude=${lat}&longitude=${lon}` +
       `&current_weather=true` +
       `&daily=weathercode,temperature_2m_max,temperature_2m_min` +
       `&forecast_days=5&timezone=auto`;
@@ -51,8 +53,8 @@ async function loadWeather(lat, lon, cityName) {
     const weather = data.current_weather;
     const timezone = data.timezone;
     $("city").textContent = `🌍 ${cityName}`;
-    $("temperature").textContent = `🌡 ${weather.temperature}°C`;
-    $("condition").textContent = `☁ Viento: ${weather.windspeed} km/h`;
+    $("temperature").textContent = `🌡️ ${weather.temperature}°C`;
+    $("condition").textContent = `☁️ Viento: ${weather.windspeed} km/h`;
 
     // Hora local
     const now = new Date();
@@ -123,17 +125,17 @@ $("cityInput").addEventListener("keypress", (e) => {
 const themeToggle = $("theme-toggle");
 if (localStorage.getItem("theme")) {
   document.documentElement.setAttribute("data-theme", localStorage.getItem("theme"));
-  themeToggle.textContent = localStorage.getItem("theme") === "dark" ? "☀" : "🌙";
+  themeToggle.textContent = localStorage.getItem("theme") === "dark" ? "☀️" : "🌙";
 } else {
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   document.documentElement.setAttribute("data-theme", prefersDark ? "dark" : "light");
-  themeToggle.textContent = prefersDark ? "☀" : "🌙";
+  themeToggle.textContent = prefersDark ? "☀️" : "🌙";
 }
 themeToggle.addEventListener("click", () => {
   const current = document.documentElement.getAttribute("data-theme");
   const next = current === "dark" ? "light" : "dark";
   document.documentElement.setAttribute("data-theme", next);
   localStorage.setItem("theme", next);
-  themeToggle.textContent = next === "dark" ? "☀" : "🌙";
+  themeToggle.textContent = next === "dark" ? "☀️" : "🌙";
 });
 
