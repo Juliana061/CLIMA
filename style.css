@@ -1,0 +1,125 @@
+:root[data-theme="dark"] {
+  --bg: #0b1220;
+  --card: #141b2d;
+  --text: #e8eefc;
+  --muted: #a9b3c9;
+  --accent: #5ab0ff;
+}
+
+:root[data-theme="light"] {
+  --bg: #f0f3fa;
+  --card: #ffffff;
+  --text: #1a1a1a;
+  --muted: #555c6e;
+  --accent: #0078ff;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.container {
+  width: 100%;
+  max-width: 480px;
+  background: var(--card);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.topbar {
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.theme-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--accent);
+  transition: transform 0.2s;
+}
+.theme-btn:hover { transform: scale(1.2); }
+
+.search-box {
+  display: flex;
+  margin-bottom: 15px;
+}
+.search-box input {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid var(--accent);
+  border-radius: 8px 0 0 8px;
+  outline: none;
+  background: var(--bg);
+  color: var(--text);
+}
+.search-box button {
+  padding: 10px 16px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+}
+
+.weather {
+  margin-top: 12px;
+  background: var(--bg);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.2);
+}
+#timezone { font-size: 14px; color: var(--muted); margin-top: 8px; }
+
+.history { margin-top: 18px; }
+.history h3 { margin-bottom: 8px; }
+.history ul { list-style: none; padding: 0; }
+.history li {
+  padding: 6px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--muted);
+  transition: background 0.2s;
+}
+.history li:hover { background: rgba(0,0,0,0.1); }
+
+/* Pronóstico */
+.card {
+  background: var(--bg);
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 18px;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.2);
+}
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(98px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+.day-card {
+  text-align: center;
+  background: rgba(255,255,255,.06);
+  border-radius: 12px;
+  padding: 10px;
+}
+.day-card .dow { font-weight: 700; margin-bottom: 4px; }
+.day-card .icon { font-size: 26px; margin: 6px 0; }
+.day-card .range { font-weight: 700; }
+.day-card .desc { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+
+

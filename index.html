@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WeatherApp</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      WeatherApp
+      <button id="theme-toggle" class="theme-btn">🌙</button>
+    </div>
+
+    <div class="search-box">
+      <input type="text" id="cityInput" placeholder="🔎 Ingresa una ciudad...">
+      <button id="searchBtn">Buscar</button>
+    </div>
+
+    <div id="weather" class="weather">
+      <h2>Clima actual</h2>
+      <p id="city">🌍 Ciudad</p>
+      <p id="temperature">🌡️ Temperatura</p>
+      <p id="condition">☁️ Condición</p>
+      <p id="timezone">⏰ Zona horaria</p>
+    </div>
+
+    <!-- Pronóstico -->
+    <section class="forecast card">
+      <h3>Próximos 5 días</h3>
+      <div id="forecastGrid" class="forecast-grid"></div>
+    </section>
+
+    <div id="history" class="history">
+      <h3>Historial</h3>
+      <ul id="historyList"></ul>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
+
+
+
+
+
